@@ -1,0 +1,4 @@
+logging:
+  file: request-logger.log
+  level:
+    root: debug
