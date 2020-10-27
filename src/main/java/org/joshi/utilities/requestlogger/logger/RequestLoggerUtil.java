@@ -1,39 +1,31 @@
 package org.joshi.utilities.requestlogger.logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.helpers.MessageFormatter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Component
+@RequestScope
 public class RequestLoggerUtil {
 
 	@Value("${request.logging.enabled:true}")
 	private boolean enabled;
 
-	@Autowired
-	private ApplicationContext context;
-	
-//	public void addLog(String message) {
-//		RequestLoggerImpl logger = context.getBean(RequestLoggerImpl.class);
-//		logger.log(message);
-//	}
-	
+	List<String> messages = new ArrayList<>();
+
 	public void addLog(String message, Object... args) {
 		if (enabled) {
-			RequestLoggerImpl logger = context.getBean(RequestLoggerImpl.class);
-		 
-			logger.log( MessageFormatter.arrayFormat(message, args).getMessage() );
+			messages.add( MessageFormatter.arrayFormat(message, args).getMessage() );
 		}
 	}
 	
 	public List<String> getMessages() {
 		if (enabled) {
-			RequestLoggerImpl logger = context.getBean(RequestLoggerImpl.class);
-			return logger.getMessages();
+			return messages;
 		} else {
 			return null;
 		}
