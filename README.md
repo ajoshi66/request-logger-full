@@ -1,5 +1,5 @@
 # Introduction
-The concept of Logging is probably as old as the application development. With logging frameworks like Apache Log4j and the extensions like Slf4j, it became highly configurable and independently managed. This blog is not about those. Even now, application logs it is most common for developers to look at the logs, when an issue is raised.
+The concept of Logging is probably as old as the application development. With logging frameworks like Apache Log4j and the extensions like Slf4j, it became highly configurable and independently managed. This blog is not about those. Even now, it is common for developers to look at the logs, when an issue is raised.
 
 As part of cloud native concepts, file-based logging became irrelevant and streamed logs, log aggregators became necessary. But, finding logs associated to specific service, specific instance, specific request was nightmare unless a lot of information is logged in every log statement.
 
